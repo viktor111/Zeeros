@@ -50,9 +50,21 @@ namespace Zeeros.Identity.Data.Repositories
             return result;
         }
 
-        public bool SaveChanges()
+        public async Task<bool> SaveChanges()
         {
-            return (_dbContext.SaveChanges() >= 0);
+            return (await _dbContext.SaveChangesAsync() >= 0);
+        }
+
+        public async Task<User> GetUserByUsername(string username)
+        {
+            var result = await _dbContext.Users.FirstOrDefaultAsync(x => x.UserName == username);
+
+            if (result is null)
+            {
+                return new User();
+            }
+
+            return result;
         }
     }
 }
