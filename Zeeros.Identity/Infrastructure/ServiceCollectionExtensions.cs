@@ -11,6 +11,7 @@ namespace Zeeros.Identity.Infrastructure
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPasswordService, PasswordService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IRegisterService, RegisterService>();
 
             return services;
         }

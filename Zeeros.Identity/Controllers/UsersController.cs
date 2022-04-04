@@ -14,16 +14,20 @@ namespace Zeeros.Identity.Controllers
         private readonly ITokenService _tokenService;
         private readonly IPasswordService _passwordService;
         private readonly IConfiguration _configuration;
+        private readonly IRegisterService _registerService;
 
         public UsersController(IUserRepository userRepository,
             ITokenService tokenService,
             IPasswordService passwordService,
+            IConfiguration configuration,
+            IRegisterService registerService)
             IConfiguration configuration)
         {
             _userRepository = userRepository;
             _tokenService = tokenService;
             _passwordService = passwordService;
             _configuration = configuration;
+            _registerService = registerService;
         }
 
         [HttpPost]
@@ -47,6 +51,7 @@ namespace Zeeros.Identity.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(RegisterUserDto registerUserDto)
         {
+            var createdUser = await _registerService.RegisterNewUser(registerUserDto);
             string passwordHash = _passwordService.Hash(registerUserDto.Password);
             var user = new User 
             { 
