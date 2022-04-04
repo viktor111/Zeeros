@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zeeros.Identity", "Zeeros.Identity\Zeeros.Identity.csproj", "{B2A4368B-1AEE-4111-9A2F-28E16174ADE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeeros.Gateway", "Zeeros.Gateway\Zeeros.Gateway.csproj", "{6FDD624B-3B2A-40E1-B328-BCFB32898531}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zeeros.Gateway", "Zeeros.Gateway\Zeeros.Gateway.csproj", "{6FDD624B-3B2A-40E1-B328-BCFB32898531}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeeros.Posts", "Zeeros.Posts\Zeeros.Posts.csproj", "{CFD0A956-BD88-4454-B366-AD3CF4DC34F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{6FDD624B-3B2A-40E1-B328-BCFB32898531}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FDD624B-3B2A-40E1-B328-BCFB32898531}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FDD624B-3B2A-40E1-B328-BCFB32898531}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD0A956-BD88-4454-B366-AD3CF4DC34F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD0A956-BD88-4454-B366-AD3CF4DC34F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD0A956-BD88-4454-B366-AD3CF4DC34F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD0A956-BD88-4454-B366-AD3CF4DC34F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
