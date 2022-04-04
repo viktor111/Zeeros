@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Zeeros.Identity.Data.Repositories;
+using Zeeros.Identity.Dtos;
+using Zeeros.Identity.Models;
+using Zeeros.Identity.Service;
 
 namespace Zeeros.Identity.Controllers
 {
@@ -17,13 +21,13 @@ namespace Zeeros.Identity.Controllers
             IPasswordService passwordService,
             IConfiguration configuration,
             IRegisterService registerService)
+            IConfiguration configuration)
         {
             _userRepository = userRepository;
             _tokenService = tokenService;
             _passwordService = passwordService;
             _configuration = configuration;
             _registerService = registerService;
-
         }
 
         [HttpPost]
@@ -48,6 +52,16 @@ namespace Zeeros.Identity.Controllers
         public async Task<ActionResult> Register(RegisterUserDto registerUserDto)
         {
             var createdUser = await _registerService.RegisterNewUser(registerUserDto);
+            string passwordHash = _passwordService.Hash(registerUserDto.Password);
+            var user = new User 
+            { 
+                UserName = registerUserDto.UserName,
+                Email = registerUserDto.Email,
+                PasswordHash = passwordHash 
+            };
+            await _userRepository.CreateUser(user);
+            await _userRepository.SaveChanges();
+            var createdUser = _userRepository.GetUserById(user.Id);
 
             return Ok(createdUser);
         }

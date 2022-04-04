@@ -1,3 +1,7 @@
+using Zeeros.Identity.Data;
+using Zeeros.Identity.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +10,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<IdentityDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
+
+builder.Services.AddServices();
 
 var app = builder.Build();
 
