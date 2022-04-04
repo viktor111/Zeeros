@@ -51,11 +51,6 @@ namespace Zeeros.Posts.Controllers
         {
             var user = _currentUser.UserId;
 
-            if(deletePostDto.UserId != user)
-            {
-                return BadRequest("Not logged in");
-            }
-
             var post = await _postRepository.GetPostById(deletePostDto.Id);
 
             _postRepository.DeletePost(post);
